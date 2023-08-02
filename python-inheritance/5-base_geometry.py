@@ -6,27 +6,31 @@ This module contains the BaseGeometry class.
 
 class BaseGeometry:
     """
-    A base class representing geometric shapes.
+    A class representing basic geometry operations and validation.
 
-    This class defines methods for calculating the area of geometric shapes
-    and validating integer values for certain properties.
+    Attributes:
+        None
+
+    Methods:
+        area(): Raises an Exception with the message "area() is not implemented."
+        integer_validator(name, value): Validates if a given value is a positive integer.
     """
 
     def area(self):
         """
-        Calculate the area of the geometric shape.
+        Calculate the area of the geometry. This method is not implemented in the base class.
 
         Raises:
-            Exception: This method is not implemented in the base class.
+            Exception: Always raises an Exception with the message "area() is not implemented."
         """
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
         """
-        Validate an integer value for a specific property.
+        Validate if a given value is a positive integer.
 
         Args:
-            name (str): The name of the property being validated.
+            name (str): The name of the value being validated.
             value (int): The value to be validated.
 
         Raises:
@@ -42,7 +46,6 @@ class BaseGeometry:
 # Example usage
 bg = BaseGeometry()
 
-# Validating integer values
 bg.integer_validator("my_int", 12)
 bg.integer_validator("width", 89)
 
