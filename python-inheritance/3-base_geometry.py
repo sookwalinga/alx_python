@@ -9,4 +9,5 @@ class BaseGeometry:
     """
     An empty class representing the base geometry.
     """
-    pass
+    def __init_subclass__(cls):
+        pass
