@@ -20,3 +20,12 @@ class BaseGeometry:
 
         """
         raise Exception("area() is not implemented")
+
+    def __dir__(self):
+        """
+        Customize the list of attributes and methods returned by dir().
+
+        Returns:
+            A list of attributes and methods including 'area'.
+        """
+        return sorted(dir(type(self)) + list(self.__dict__) + ['area'])
