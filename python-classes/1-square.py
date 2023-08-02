@@ -1,3 +1,12 @@
+#!/usr/bin/python3
+"""
+This module defines the Square class, which represents a square.
+
+Classes:
+    Square: A class representing a square.
+"""
+
+
 class Square:
     """
     A class representing a square.
