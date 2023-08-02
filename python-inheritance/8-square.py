@@ -19,12 +19,14 @@ class Square(Rectangle):
         """
         # Validate and set size using the integer_validator method
         self.integer_validator("size", size)
-        # Call the constructor of the parent class
-        # Rectangle with size for both width and height
+        # Call the constructor of the parent class Rectangle with size for both width and height
         super().__init__(size, size)
 
     def __str__(self):
         """
         Returns a string representation of the square.
         """
-        return "[Square] {}/{}".format(self._Rectangle__width, self._Rectangle__height)
+        return "[Square] {}/{}".format(
+            self._Rectangle__width,
+            self._Rectangle__height
+        )
