@@ -1,27 +1,18 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
+"""Sends a POST request to a given URL with a given email.
+Usage: ./2-post_email.py <URL> <email>
+  - Displays the body of the response.
 """
-    Takes a URL and an email address as input, sends a POST request, and displays the response body.
-"""
-
-import requests
 import sys
-
-
-def post_email(url, email):
-    """
-    Sends a POST request with the provided email to the given URL and displays the response body.
-    """
-    payload = {'email': email}
-    response = requests.post(url, data=payload)
-
-    print(response.text)
+import urllib.parse
+import urllib.request
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Usage: {} <URL> <email>".format(sys.argv[0]))
-        sys.exit(1)
-
     url = sys.argv[1]
-    email = sys.argv[2]
-    post_email(url, email)
+    value = {"email": sys.argv[2]}
+    data = urllib.parse.urlencode(value).encode("ascii")
+
+    request = urllib.request.Request(url, data)
+    with urllib.request.urlopen(request) as response:
+        print(response.read().decode("utf-8"))
