@@ -18,13 +18,12 @@
 6. **Handling Named Arguments in a Function**:
    When defining a function, you can specify parameters with default values. These parameters are considered named arguments. When calling the function, you can pass values for these named arguments explicitly, and if not provided, the default values are used. This helps make functions more flexible and easier to use, as users can override defaults when necessary.
 
-Here's a simple example of a function with named arguments:
-```python
+Example of a function with named arguments:
+
+```
 def greet(name, message="Hello"):
     print(f"{message}, {name}!")
 
 greet("Alice")                  # Prints: Hello, Alice!
 greet("Bob", message="Hi")      # Prints: Hi, Bob!
 ```
-
-These concepts are foundational in Python development and will help you write more robust, maintainable, and flexible code.
