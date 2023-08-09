@@ -1,3 +1,9 @@
+"""
+models.rectangle
+
+This module defines the Rectangle class, which inherits from Base and represents rectangles with width, height, and position.
+"""
+
 from models.base import Base
 
 
