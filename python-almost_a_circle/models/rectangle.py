@@ -39,5 +39,3 @@ class Rectangle(Base):
         self.height = height
         self.x = x
         self.y = y
-
-    # Getters and setters for width, height, x, y...
