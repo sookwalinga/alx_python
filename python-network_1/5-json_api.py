@@ -15,14 +15,14 @@ if __name__ == "__main__":
 
     r = requests.post("http://0.0.0.0:5000/search_user", data=payload)
 
-if r.status_code == 200:
-    try:
-        response = r.json()
-        if response == {}:
-            print("No result")
-        else:
-            print("[{}] {}".format(response.get("id"), response.get("name")))
-    except ValueError:
-        print("Not a valid JSON")
-else:
-    print("Server is not available.")
+    if r.status_code == 200:
+        try:
+            response = r.json()
+            if response == {}:
+                print("No result")
+            else:
+                print("[{}] {}".format(response.get("id"), response.get("name")))
+        except ValueError:
+            print("Not a valid JSON")
+    else:
+        print("Server is not available.")
