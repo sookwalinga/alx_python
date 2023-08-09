@@ -1,14 +1,28 @@
-#!/usr/bin/python3
-"""takes url & email, sends a POST request and displays the response"""
-from urllib.request import Request, urlopen
-from urllib.error import HTTPError
-from sys import argv
+#!/usr/bin/env python3
+"""
+    Takes a URL as input, sends a request, and displays the response body or error code.
+"""
 
-if __name__ == '__main__':
-    req = Request(argv[1])
-    try:
-        with urlopen(req) as response:
-            r = response.read()
-            print(r.decode('utf-8'))
-    except HTTPError as e:
-        print('Error code:', e.code)
+import requests
+import sys
+
+
+def fetch_and_display(url):
+    """
+    Fetches the provided URL, displays the response body or error code.
+    """
+    response = requests.get(url)
+
+    if response.status_code >= 400:
+        print("Error code: {}".format(response.status_code))
+    else:
+        print(response.text)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: {} <URL>".format(sys.argv[0]))
+        sys.exit(1)
+
+    url = sys.argv[1]
+    fetch_and_display(url)
