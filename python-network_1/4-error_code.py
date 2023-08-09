@@ -1,19 +1,28 @@
-#!/usr/bin/python3
-"""Sends a request to a given URL and displays the response body.
-Usage: ./3-error_code.py <URL>
-  - Handles HTTP errors.
+#!/usr/bin/env python3
 """
+    Takes a URL as input, sends a request, and displays the response body or error code.
+"""
+
+import requests
 import sys
-import urllib.error
-import urllib.request
+
+
+def fetch_and_display(url):
+    """
+    Fetches the provided URL, displays the response body or error code.
+    """
+    response = requests.get(url)
+
+    if response.status_code >= 400:
+        print("Error code: {}".format(response.status_code))
+    else:
+        print(response.text)
 
 
 if __name__ == "__main__":
-    url = sys.argv[1]
+    if len(sys.argv) != 2:
+        print("Usage: {} <URL>".format(sys.argv[0]))
+        sys.exit(1)
 
-    request = urllib.request.Request(url)
-    try:
-        with urllib.request.urlopen(request) as response:
-            print(response.read().decode("ascii"))
-    except urllib.error.HTTPError as e:
-        print("Error code: {}".format(e.code))
+    url = sys.argv[1]
+    fetch_and_display(url)
