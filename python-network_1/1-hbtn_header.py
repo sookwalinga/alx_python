@@ -1,23 +1,36 @@
 #!/usr/bin/python3
 """Find the value of the X-Request-Id in response"""
 
-from urllib import request, error
-from sys import argv
+import requests
+import sys
 
 
-def request_header_property(url: str) -> str:
+def fetch_x_request_id(url):
     """
-    Send a request to the URL specified and
-    get the response headers
+    Fetches the value of the X-Request-Id header from the response of the given URL.
+
     Args:
-        url (str): The URL to query
+        url (str): The URL to send the request to.
+
+    Returns:
+        str: The value of the X-Request-Id header, or a message if the header is not found.
     """
     try:
-        with request.urlopen(url) as response:
-            return response.info()['X-Request-Id']
-    except error.URLError as e:
-        return e.reason
+        response = requests.get(url)
+        if 'X-Request-Id' in response.headers:
+            x_request_id = response.headers['X-Request-Id']
+            return x_request_id
+        else:
+            return "X-Request-Id header not found in the response."
+    except requests.exceptions.RequestException as e:
+        return "Error making the request: {}".format(e)
 
 
 if __name__ == "__main__":
-    print(request_header_property(argv[1]))
+    if len(sys.argv) != 2:
+        print("Usage: {} <url>".format(sys.argv[0]))
+        sys.exit(1)
+
+    url = sys.argv[1]
+    x_request_id = fetch_x_request_id(url)
+    print(x_request_id)
