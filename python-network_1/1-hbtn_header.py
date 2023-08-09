@@ -1,36 +1,32 @@
-#!/usr/bin/python3
-"""Find the value of the X-Request-Id in response"""
+#!/usr/bin/env python3
+"""
+Module to send a request to a URL and display the value of the variable X-Request-Id
+in the response header.
+"""
 
 import requests
 import sys
 
 
-def fetch_x_request_id(url):
+def get_x_request_id(url):
     """
-    Fetches the value of the X-Request-Id header from the response of the given URL.
+    Send a request to the specified URL and display the value of the variable X-Request-Id
+    in the response header.
 
     Args:
         url (str): The URL to send the request to.
-
-    Returns:
-        str: The value of the X-Request-Id header, or a message if the header is not found.
     """
-    try:
-        response = requests.get(url)
-        if 'X-Request-Id' in response.headers:
-            x_request_id = response.headers['X-Request-Id']
-            return x_request_id
-        else:
-            return "X-Request-Id header not found in the response."
-    except requests.exceptions.RequestException as e:
-        return "Error making the request: {}".format(e)
+    response = requests.get(url)
+
+    if 'X-Request-Id' in response.headers:
+        x_request_id = response.headers['X-Request-Id']
+        print(x_request_id)
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: {} <url>".format(sys.argv[0]))
+        print("Usage: {} <URL>".format(sys.argv[0]))
         sys.exit(1)
 
     url = sys.argv[1]
-    x_request_id = fetch_x_request_id(url)
-    print(x_request_id)
+    get_x_request_id(url)
