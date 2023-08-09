@@ -14,6 +14,8 @@ if __name__ == "__main__":
     payload = {"q": letter}
 
     r = requests.post("http://0.0.0.0:5000/search_user", data=payload)
+
+if r.status_code == 200:
     try:
         response = r.json()
         if response == {}:
@@ -22,3 +24,5 @@ if __name__ == "__main__":
             print("[{}] {}".format(response.get("id"), response.get("name")))
     except ValueError:
         print("Not a valid JSON")
+else:
+    print("Server is not available.")
