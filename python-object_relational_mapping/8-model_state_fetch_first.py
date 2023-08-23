@@ -11,22 +11,22 @@ if __name__ == "__main__":
         print("Usage: {} <username> <password> <database>"
               .format(sys.argv[0]))
         sys.exit(1)
-    
+
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
-    
+
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
                            .format(username, password, database),
                            pool_pre_ping=True)
-    
+
     Session = sessionmaker(bind=engine)
     session = Session()
-    
+
     first_state = session.query(State).order_by(State.id).first()
     if first_state is None:
         print("Nothing")
     else:
         print("{}: {}".format(first_state.id, first_state.name))
-    
+
     session.close()
