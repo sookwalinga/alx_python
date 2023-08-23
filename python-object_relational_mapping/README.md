@@ -14,5 +14,3 @@
 
 5. **How to map a Python Class to a MySQL table:**
    Mapping a Python class to a MySQL table involves using an ORM framework like SQLAlchemy or Django's ORM. You define a Python class that represents the table's structure, and the ORM handles the mapping between the class attributes and the table columns. This abstraction enables you to work with database records as Python objects.
-
-Remember, these explanations are concise, so feel free to explore each topic further for more in-depth understanding and implementation details.
