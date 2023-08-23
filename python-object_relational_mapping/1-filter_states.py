@@ -23,7 +23,9 @@ try:
     cursor = db.cursor()
 
     # Execute the SELECT query for states starting with 'N' (case-sensitive)
-    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id")
+    cursor.execute(
+        "SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id"
+        )
 
     # Fetch all rows
     rows = cursor.fetchall()
