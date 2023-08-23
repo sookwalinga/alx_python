@@ -25,7 +25,7 @@ try:
     cursor = db.cursor()
 
     # Execute the SELECT query to list cities of the given state
-    query = ("SELECT cities.name FROM cities "
+    query = ("SELECT cities.name, states.name FROM cities "
              "JOIN states ON cities.state_id = states.id "
              "WHERE states.name = %s ORDER BY cities.id")
     cursor.execute(query, (state_name,))
@@ -33,9 +33,9 @@ try:
     # Fetch all rows
     rows = cursor.fetchall()
 
-    # Extract city names and display the results
-    city_names = [row[0] for row in rows]
-    print(", ".join(city_names))
+    # Display the results
+    for row in rows:
+        print("{}, {}".format(row[0], row[1]))
 
     # Close the cursor and the database connection
     cursor.close()
