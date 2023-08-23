@@ -25,7 +25,7 @@ try:
     cursor = db.cursor()
 
     # Execute the SELECT query with the user input
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id"
+    query = "SELECT * FROM states WHERE name LIKE BINARY 'N%' = %s ORDER BY id"
     cursor.execute(query, (state_name,))
 
     # Fetch all rows
