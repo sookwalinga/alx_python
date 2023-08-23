@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Display values in the states table 
+"""Display values in the states table
 where name matches the argument (safe from SQL injection)"""
 
 import MySQLdb
