@@ -1,12 +1,13 @@
 #!/usr/bin/python3
-"""Script to display values in the states table where name matches the argument"""
+"""Display values in the states table where name matches the argument"""
 
 import MySQLdb
 import sys
 
 # Check if the correct number of arguments are provided
 if len(sys.argv) != 5:
-    print("Usage: {} <username> <password> <database> <state_name>".format(sys.argv[0]))
+    print("Usage: {} <username> <password> <database> <state_name>"
+          .format(sys.argv[0]))
     sys.exit(1)
 
 # Retrieve command line arguments
