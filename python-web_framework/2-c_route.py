@@ -1,3 +1,8 @@
+"""
+This module is a simple Flask application that
+provides greetings and routes for specific URLs.
+"""
+
 from flask import Flask
 
 app = Flask(__name__)
