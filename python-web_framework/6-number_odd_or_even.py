@@ -1,3 +1,7 @@
+"""
+This module implements a Flask web application
+with various routes and template rendering.
+"""
 from flask import Flask, render_template
 
 app = Flask(__name__)
