@@ -1,9 +1,8 @@
 """
-This module implements a Flask web application with
-various routes and template rendering.
+This module implements a Flask web application with various routes.
 """
 
-from flask import Flask, render_template
+from flask import Flask
 
 app = Flask(__name__)
 
@@ -27,16 +26,6 @@ def python_text(text):
 @app.route('/number/<int:n>', strict_slashes=False)
 def number(n):
     return f'{n} is a number'
-
-@app.route('/number_template/<int:n>', strict_slashes=False)
-def number_template(n):
-    return render_template('5-number.html', number=n)
-
-@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
-def number_odd_or_even(n):
-    even_odd = "even" if n % 2 == 0 else "odd"
-    return render_template('6-number_odd_or_even.html',
-                           number=n, even_odd=even_odd)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
