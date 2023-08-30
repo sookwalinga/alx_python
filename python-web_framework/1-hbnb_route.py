@@ -1,3 +1,8 @@
+"""
+This module is a simple Flask application
+that provides greetings to users.
+"""
+
 from flask import Flask
 
 app = Flask(__name__)
