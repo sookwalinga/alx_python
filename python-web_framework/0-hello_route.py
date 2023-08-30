@@ -4,7 +4,7 @@ from flask import Flask
 # Create an instance of the Flask class and use '__name__' as the module name
 app = Flask(__name__)
 
-# Decorator to define a route for the root URL ('/') and disable strict trailing slashes
+# Route for root URL ('/') and disable strict trailing slashes
 @app.route('/', strict_slashes=False)
 def hello():
     # Function to be executed when the root URL is accessed
