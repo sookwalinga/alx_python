@@ -1,3 +1,8 @@
+"""
+This module is a simple Flask application that
+provides greetings and routes for specific URLs.
+"""
+
 from flask import Flask
 
 app = Flask(__name__)
@@ -13,15 +18,6 @@ def hbnb():
 @app.route('/c/<text>', strict_slashes=False)
 def c_text(text):
     return f'C {text.replace("_", " ")}'
-
-@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
-@app.route('/python/<text>', strict_slashes=False)
-def python_text(text):
-    return f'Python {text.replace("_", " ")}'
-
-@app.route('/number/<int:n>', strict_slashes=False)
-def number(n):
-    return f'{n} is a number'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
