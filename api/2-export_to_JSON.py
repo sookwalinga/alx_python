@@ -44,7 +44,6 @@ def get_employee_info(employee_id):
         json.dump(employee_json_data, json_file, indent=4)
 
     print(f"Data has been exported to {json_filename}.")
-    print(f"Correct USER_ID: OK")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
