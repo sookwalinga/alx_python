@@ -23,7 +23,7 @@ def get_employee_info(employee_id):
     # Write tasks to CSV
     with open(csv_filename, mode='w', newline='') as csv_file:
         csv_writer = csv.writer(csv_file)
-        csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+        # csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
 
         for todo in todos_data:
             task_completed_status = "Completed" if todo['completed'] else "Not Completed"
