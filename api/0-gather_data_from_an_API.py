@@ -19,7 +19,7 @@ def get_employee_info(employee_id):
     total_tasks = len(todos_data)
     completed_tasks = sum(1 for todo in todos_data if todo['completed'])
 
-    # Print the employee's TODO list progress
+    # Print the employee's TODO list progress in the specified format
     print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
     for todo in todos_data:
         if todo['completed']:
@@ -30,5 +30,9 @@ if __name__ == "__main__":
         print("Usage: python3 gather_data_from_an_API.py <employee_id>")
         sys.exit(1)
 
-    employee_id = int(sys.argv[1])
-    get_employee_info(employee_id)
+    try:
+        employee_id = int(sys.argv[1])
+        get_employee_info(employee_id)
+    except ValueError:
+        print("Employee ID must be an integer.")
+        sys.exit(1)
