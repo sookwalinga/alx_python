@@ -23,7 +23,6 @@ def get_employee_info(employee_id):
     print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
     for index, todo in enumerate(todos_data, start=1):
         if todo['completed']:
-            print(f"Task {index} Formatting: OK")
             print(f"\t{todo['title']}")
 
 if __name__ == "__main__":
