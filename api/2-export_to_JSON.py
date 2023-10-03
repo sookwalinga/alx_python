@@ -1,5 +1,4 @@
 """
-
 This module exports data in the JSON format.
 """
 
@@ -15,6 +14,11 @@ def get_employee_info(employee_id):
     # Fetch employee information
     user_response = requests.get(user_url)
     user_data = user_response.json()
+
+    if 'id' not in user_data:
+        print(f"USER_ID {employee_id} is not valid.")
+        return
+
     employee_id = user_data.get('id')
     employee_name = user_data.get('username')
 
@@ -40,6 +44,7 @@ def get_employee_info(employee_id):
         json.dump(employee_json_data, json_file, indent=4)
 
     print(f"Data has been exported to {json_filename}.")
+    print(f"Correct USER_ID: OK")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
