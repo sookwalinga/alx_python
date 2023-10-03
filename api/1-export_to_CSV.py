@@ -1,7 +1,7 @@
 import csv
-import os
 import requests
 import sys
+import os
 
 def get_employee_info(employee_id):
     # Define the API endpoints
