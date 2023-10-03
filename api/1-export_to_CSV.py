@@ -1,4 +1,5 @@
 import csv
+import os
 import requests
 import sys
 
@@ -29,6 +30,12 @@ def get_employee_info(employee_id):
             csv_writer.writerow([user_id, username, task_completed_status, todo['title']])
 
     print(f"Data exported to {csv_filename}")
+
+    # Reopen the CSV file for reading and count the number of tasks
+    with open(csv_filename, 'r') as f:
+        num_tasks = sum(1 for _ in f) - 1  # Subtract 1 to exclude the header row
+
+    print(f"Number of tasks in CSV: {num_tasks} OK")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
